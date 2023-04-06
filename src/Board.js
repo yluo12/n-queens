@@ -242,6 +242,7 @@
       // return true;
       // return false;    let matrix = this.rows();
       let count = 0;
+      let matrix = this.rows();
 
       for (let i = 0; i < matrix.length; i++) {
         let row = matrix[i];
@@ -255,17 +256,29 @@
       return count > 1;
     },
 
-    },
+    // },
 
     // test if any minor diagonals on this board contain conflicts
     hasAnyMinorDiagonalConflicts: function() {
       // return false; // fixme
-      var oddNumGenerator = function (n) {
-        var num = 1;
+      let oddNumGenerator = function (n) {
+        let num = 1;
         while (n > 2) {
+          num += 2;
+          n--;
+        }
+        return num;
+      };
 
+      let n = this.get('n');
+      let diagonalUpperBound = oddNumGenerator(n);
+
+      for (let i = 1; i <= diagonalUpperBound; i++) {
+        if (this.hasMinorDiagonalConflictAt(i)) {
+          return true;
         }
       }
+      return false;
 
     }
 
@@ -281,5 +294,6 @@
       });
     });
   };
+
 
 }());

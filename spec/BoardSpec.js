@@ -232,5 +232,13 @@ describe('Board', function() {
     it('should find a queens conflict', function() {
       expect(board.hasAnyQueensConflicts()).to.be.equal(true);
     });
+
+    // matrix = [
+    //   [0]
+    // ];
+    // board = new Board(matrix);
+    // it('should not find any rooks conflict', function() {
+    //   expect(board.hasAnyRooksConflicts()).to.be.equal(false);
+    // });
   });
 });
